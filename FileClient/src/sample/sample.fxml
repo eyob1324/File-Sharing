@@ -6,29 +6,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
-<AnchorPane fx:controller="sample.Controller"
+<?import javafx.scene.control.ListView?>
+<AnchorPane fx:controller="sample.controller"
             xmlns:fx="http://javafx.com/fxml">
-    <TableView fx:id = "tabview1" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="305" AnchorPane.topAnchor="30" AnchorPane.bottomAnchor="0">
-        <columns>
-            <TableColumn fx:id="Client" prefWidth="75.0" text="Client" />
-        </columns>
-        <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-        </columnResizePolicy>
+  <children>
+      <Button fx:id="Download" layoutX="20" layoutY="14" onAction="#btnOnPressdownload" prefHeight="26.0" prefWidth="100.0" text="Download" />
+      <Button fx:id="Upload" layoutX="130" layoutY="14" onAction="#btnOnPressUpload" prefHeight="26.0" prefWidth="100.0" text="Upload" />
 
-    </TableView>
-
-    <TableView fx:id = "tabview2" AnchorPane.leftAnchor="305" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="30" AnchorPane.bottomAnchor="0">
-        <columns>
-            <TableColumn fx:id="Server" prefWidth="75.0" text="Server" />
-        </columns>
-        <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-        </columnResizePolicy>
-
-    </TableView>
-
-    <Button id="DOWNLOAD" fx:id="Download" onAction="#btnOnPressdownload" text="download" AnchorPane.topAnchor="2" AnchorPane.leftAnchor="10"/>
-    <Button id="UPLOAD" fx:id="Upload" onAction="#btnOnPressUpload" text="upload" AnchorPane.topAnchor="2" AnchorPane.leftAnchor="100" />
+      <ListView fx:id="client" layoutX="0" layoutY="50" prefHeight="650" prefWidth="300" />
+      <ListView fx:id="Server" layoutX="310" layoutY="50" prefHeight="650" prefWidth="285" />
+  </children>
 
 </AnchorPane>
