@@ -1,5 +1,0 @@
-Hello my name
-is
-Eyob
-I'm 19 years old
-I'm writing in text file

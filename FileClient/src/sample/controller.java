@@ -117,13 +117,14 @@ public class controller {
             e.printStackTrace();
         }
         clientSocket.close();
-
+        ListViewUpdate();
     }
 
     public void btnOnPressUpload(ActionEvent actionEvent) {
         Socket clientSocket = null;
         PrintWriter out = null;
-
+        ClientFiles.clear();
+        ServerFiles.clear();
         try{
             clientSocket = new Socket("localhost",8080);
             out = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()));
@@ -146,6 +147,58 @@ public class controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+    ListViewUpdate();
     }
+
+
+    public void ListViewUpdate() {
+        ServerFiles.clear();
+        ClientFiles.clear();
+
+        String DataFromServer = "";
+        String message1= "";
+        String message2= "";
+
+        try{
+            Socket clientSocket = new Socket("localhost", 8080);
+            Out = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()));
+            In =  new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            message1 = In.readLine();
+            message2 = In.readLine();
+            Out.println("Dir");
+            Out.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            DataFromServer = In.readLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String[] FromeServer = DataFromServer.split(" ");
+        for (String file : FromeServer) {
+
+            ServerFiles.add(file);
+
+        }
+
+
+        // takes the file folder and makes it a list that we can go through
+        File[] listOfFilesClient = Client_folder.listFiles();
+        for (File file : listOfFilesClient) {
+            if (file.isFile()) {
+                ClientFiles.add(file.getName());
+            }
+        }
+
+
+
+        Server.itemsProperty().bind(ServerFileList);
+        client.itemsProperty().bind(ClientFileList);
+        ClientFileList.set(FXCollections.observableArrayList(ClientFiles));
+        ServerFileList.set(FXCollections.observableArrayList(ServerFiles));
+    }
+
+
 }
