@@ -61,7 +61,26 @@ public class FileServerThread extends Thread{
     }
 
     protected boolean processCommand(String command, String arguments) {
-        if(command.equalsIgnoreCase("DOWNLOAD")){
+        if(command.equalsIgnoreCase("DownLoad")){
+            final File Server_folder = new File("ServerFiles");
+            File[] listOfFilesServer = Server_folder.listFiles();
+            for(File files:listOfFilesServer){
+                if(files.getName().equals(arguments)){
+                    File FileReading = new File(String.valueOf(files.getAbsoluteFile()));
+                    Scanner sc = null;
+                    try {
+                        sc = new Scanner(files);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    String FileSending = " ";
+                    while (sc.hasNextLine()) {
+                        FileSending +=sc.nextLine()+" ";
+                    }
+                    out.println(FileSending);
+                }
+            }
+
 
          }else if(command.equalsIgnoreCase("Upload")){
             String path = "";

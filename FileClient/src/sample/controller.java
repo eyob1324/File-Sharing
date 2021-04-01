@@ -79,7 +79,44 @@ public class controller {
         ServerFileList.set(FXCollections.observableArrayList(ServerFiles));
     }
 
-    public void btnOnPressdownload(ActionEvent actionEvent) {
+    public void btnOnPressdownload(ActionEvent actionEvent) throws IOException {
+        Socket clientSocket = null;
+        PrintWriter OUT = null;
+        String DataFromServer;
+        String message1= "";
+        String message2= "";
+
+        try {
+            clientSocket = new Socket("localhost",8080);
+            OUT = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()));
+            OUT.println("DownLoad"+" "+Server.getSelectionModel().getSelectedItems().get(0));
+            In =  new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            message1 = In.readLine();
+            message2 = In.readLine();
+            OUT.flush();
+
+      } catch (Exception e) {
+          e.printStackTrace();
+      }
+
+        try{
+            DataFromServer = In.readLine();
+            String path = "ClientFiles/" + Server.getSelectionModel().getSelectedItems().get(0);
+            File IncomingFile= new File(path);
+            if(!IncomingFile.exists()) {
+                IncomingFile.createNewFile();
+            }
+            FileWriter fw=new FileWriter(path);
+            String [] Sentences =DataFromServer.split(" ");
+            for(String Sentence:Sentences){
+                fw.write(Sentence+" ");
+            }
+            fw.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        clientSocket.close();
 
     }
 
