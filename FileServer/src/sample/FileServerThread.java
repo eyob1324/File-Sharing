@@ -31,7 +31,7 @@ public class FileServerThread extends Thread{
 
         boolean endOfSession = false;
         while(!endOfSession) {
-            //endOfSession = processCommand();
+            endOfSession = processCommand();
         }
         try {
             socket.close();
@@ -40,9 +40,67 @@ public class FileServerThread extends Thread{
         }
     }
 
+    protected boolean processCommand() {
+        String message = null;
+        try {
+            message = in.readLine();
+        } catch (IOException e) {
+            System.err.println("Error reading command from socket.");
+            return true;
+        }
+        if (message == null) {
+            return true;
+        }
+        StringTokenizer st = new StringTokenizer(message);
+        String command = st.nextToken();
+        String args = null;
+        if (st.hasMoreTokens()) {
+            args = message.substring(command.length()+1, message.length());
+        }
+        return processCommand(command, args);
+    }
+
+    protected boolean processCommand(String command, String arguments) {
+        if(command.equalsIgnoreCase("DOWNLOAD")){
+
+         }else if(command.equalsIgnoreCase("Upload")){
+            String path = "";
+            String Filename = "";
+            File IncomingFile = null;
+
+                try {
+
+
+                    if (arguments.contains(".txt")) {
+                        Filename = arguments;
+                        path = "ServerFiles/" + arguments;
+                        System.out.println(path);
+
+                         IncomingFile = new File(path);
+
+                        if(!IncomingFile.exists()) {
+                            IncomingFile.createNewFile();
+                        }
+                        String FileReceving = in.readLine();
+                        FileWriter fw=new FileWriter(path);
+                        String [] Sentences =FileReceving.split(" ");
+                        for(String Sentence:Sentences){
+                            fw.write(Sentence+" ");
+                        }
+                        fw.close();
+                    }
 
 
 
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+        }
+
+      return false;
+    }
 
 
 
