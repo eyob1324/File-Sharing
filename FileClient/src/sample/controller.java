@@ -11,9 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,22 +31,52 @@ public class controller {
     protected List<String> ClientFiles = new ArrayList<>();
     protected List<String> ServerFiles = new ArrayList<>();
     protected ListProperty<String> ClientFileList = new SimpleListProperty<>();
+    protected ListProperty<String> ServerFileList = new SimpleListProperty<>();
     final File Client_folder = new File("ClientFiles");
-
+    private PrintWriter Out = null;
+    private BufferedReader In = null;
     public void initialize() {
+        String DataFromServer = "";
+        String message1= "";
+        String message2= "";
+
+        try{
+            Socket clientSocket = new Socket("localhost", 8080);
+            Out = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()));
+            In =  new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            message1 = In.readLine();
+            message2 = In.readLine();
+            Out.println("Dir");
+        Out.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            DataFromServer = In.readLine();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String[] FromeServer = DataFromServer.split(" ");
+        for (String file : FromeServer) {
+
+            ServerFiles.add(file);
+
+        }
+
 
         // takes the file folder and makes it a list that we can go through
         File[] listOfFilesClient = Client_folder.listFiles();
         for (File file : listOfFilesClient) {
             if (file.isFile()) {
                 ClientFiles.add(file.getName());
-
             }
         }
 
-
+        Server.itemsProperty().bind(ServerFileList);
         client.itemsProperty().bind(ClientFileList);
         ClientFileList.set(FXCollections.observableArrayList(ClientFiles));
+        ServerFileList.set(FXCollections.observableArrayList(ServerFiles));
     }
 
     public void btnOnPressdownload(ActionEvent actionEvent) {
@@ -58,8 +86,6 @@ public class controller {
     public void btnOnPressUpload(ActionEvent actionEvent) {
         Socket clientSocket = null;
         PrintWriter out = null;
-
-
 
         try{
             clientSocket = new Socket("localhost",8080);

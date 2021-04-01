@@ -69,8 +69,6 @@ public class FileServerThread extends Thread{
             File IncomingFile = null;
 
                 try {
-
-
                     if (arguments.contains(".txt")) {
                         Filename = arguments;
                         path = "ServerFiles/" + arguments;
@@ -89,13 +87,22 @@ public class FileServerThread extends Thread{
                         }
                         fw.close();
                     }
-
-
-
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+        }else if(command.equalsIgnoreCase("Dir")){
+            System.out.println("got to here");
+            String FilesSending = "";
+            final File Server_folder = new File("ServerFiles");
+            File[] listOfFilesServer = Server_folder.listFiles();
+            for (File file :listOfFilesServer) {
+                if (file.isFile()) {
+                   FilesSending += file.getName()+" ";
+
+                }
+            }
+            out.println(FilesSending);
 
         }
 
