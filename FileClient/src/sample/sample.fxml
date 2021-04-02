@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.GridPane?>
 
@@ -7,14 +8,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.ListView?>
-<AnchorPane fx:controller="sample.controller"
+
+
+<AnchorPane styleClass="bg" fx:controller="sample.controller"
             xmlns:fx="http://javafx.com/fxml">
   <children>
-      <Button fx:id="Download" layoutX="20" layoutY="14" onAction="#btnOnPressdownload" prefHeight="26.0" prefWidth="100.0" text="Download" />
-      <Button fx:id="Upload" layoutX="130" layoutY="14" onAction="#btnOnPressUpload" prefHeight="26.0" prefWidth="100.0" text="Upload" />
+      <Button fx:id="Download" styleClass="Download" layoutX="20" layoutY="14" onAction="#btnOnPressdownload" prefHeight="26.0" prefWidth="100.0" text="Download"/>
+      <Button fx:id="Upload" styleClass="Upload" layoutX="130" layoutY="14" onAction="#btnOnPressUpload" prefHeight="26.0" prefWidth="100.0" text="Upload" />
 
-      <ListView fx:id="client" layoutX="0" layoutY="50" prefHeight="650" prefWidth="300" />
+      <ListView fx:id="client" styleClass="Client" layoutX="0" layoutY="50" prefHeight="650" prefWidth="300" />
       <ListView fx:id="Server" layoutX="310" layoutY="50" prefHeight="650" prefWidth="285" />
+
   </children>
+
 
 </AnchorPane>
