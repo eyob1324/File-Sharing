@@ -6,11 +6,20 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -27,6 +36,16 @@ public class controller {
     private ListView client;
     @FXML
     private ListView Server;
+    @FXML
+    private javafx.scene.control.Label lblSystemMessage;
+    @FXML
+    private javafx.scene.control.Label text1;
+    @FXML
+    private javafx.scene.control.Label text2;
+    @FXML
+    private javafx.scene.control.Button Hide;
+
+
 
     protected List<String> ClientFiles = new ArrayList<>();
     protected List<String> ServerFiles = new ArrayList<>();
@@ -35,7 +54,10 @@ public class controller {
     final File Client_folder = new File("ClientFiles");
     private PrintWriter Out = null;
     private BufferedReader In = null;
+
     public void initialize() {
+        text1.setFont(new Font("Cambria", 25));
+        text2.setFont(new Font("Cambria", 25));
         String DataFromServer = "";
         String message1= "";
         String message2= "";
@@ -77,6 +99,26 @@ public class controller {
         client.itemsProperty().bind(ClientFileList);
         ClientFileList.set(FXCollections.observableArrayList(ClientFiles));
         ServerFileList.set(FXCollections.observableArrayList(ServerFiles));
+    }
+
+    public void helpLable(ActionEvent event){
+        Hide.setVisible(true);
+        lblSystemMessage.setText(
+                "Help Menu:" +
+                "\nUploaded:" +
+                "\n 1.choose folder you would like to upload" +
+                "\n  from client-side then press Upload"+
+                "\nDownload:" +
+                "\n 1.choose folder you would like to download" +
+                "\n  from server-side Then press Download"
+        );
+        Hide.setText("Hide Text");
+        Hide.setLayoutX(390);
+        Hide.setLayoutY(845);
+    }
+    public void hideLable(ActionEvent event){
+        lblSystemMessage.setText("");
+        Hide.setVisible(false);
     }
 
     public void btnOnPressdownload(ActionEvent actionEvent) throws IOException {
@@ -150,6 +192,9 @@ public class controller {
     ListViewUpdate();
     }
 
+    public void exitProgram(ActionEvent event){
+        System.exit(0);
+    }
 
     public void ListViewUpdate() {
         ServerFiles.clear();

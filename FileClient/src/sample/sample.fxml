@@ -10,16 +10,33 @@
 <?import javafx.scene.control.ListView?>
 
 
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <AnchorPane styleClass="bg" fx:controller="sample.controller"
             xmlns:fx="http://javafx.com/fxml">
   <children>
-      <Button fx:id="Download" styleClass="Download" layoutX="20" layoutY="14" onAction="#btnOnPressdownload" prefHeight="26.0" prefWidth="100.0" text="Download"/>
-      <Button fx:id="Upload" styleClass="Upload" layoutX="130" layoutY="14" onAction="#btnOnPressUpload" prefHeight="26.0" prefWidth="100.0" text="Upload" />
+      <Button fx:id="Download" styleClass="Download" layoutX="393" layoutY="0" onAction="#btnOnPressdownload" prefHeight="26.0" prefWidth="100.0" text="Download"/>
+      <Button fx:id="Upload" styleClass="Upload" layoutX="495" layoutY="0" onAction="#btnOnPressUpload" prefHeight="26.0" prefWidth="100.0" text="Upload" />
 
-      <ListView fx:id="client" styleClass="Client" layoutX="0" layoutY="50" prefHeight="650" prefWidth="300" />
-      <ListView fx:id="Server" layoutX="310" layoutY="50" prefHeight="650" prefWidth="285" />
+      <ListView fx:id="client" styleClass="Client" layoutX="0" layoutY="80" prefHeight="650" prefWidth="300" />
+      <ListView fx:id="Server" layoutX="310" layoutY="80" prefHeight="650" prefWidth="285" />
+      <Label fx:id="lblSystemMessage" layoutX="310" layoutY="730" />
+      <Label fx:id="text1" text="Server" layoutX="310" layoutY="45"/>
+      <Label fx:id="text2" text="Client" layoutX="10" layoutY="45"/>
+      <Button fx:id="Hide" onAction="#hideLable" styleClass="Hide"/>
+
 
   </children>
+    <MenuBar fx:id="menuBar" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="Menu">
+        <Menu text="Menu">
+            <MenuItem text="Help" onAction="#helpLable"></MenuItem>
+            <MenuItem text="Exit" onAction="#exitProgram"></MenuItem>
+        </Menu>
+
+    </MenuBar>
+
 
 
 </AnchorPane>
