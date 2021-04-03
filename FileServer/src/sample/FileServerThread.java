@@ -62,6 +62,11 @@ public class FileServerThread extends Thread{
 
     protected boolean processCommand(String command, String arguments) {
         if(command.equalsIgnoreCase("DownLoad")){
+            /*
+            *The client sends a request to download a file with a the filname of the file that the client wants to delete
+            * Once The server gets the request it goes through the Server_folder directory for the file the client requested
+            * Once it finds the file it reads the content and sends it to to the client
+            * */
             final File Server_folder = new File("ServerFiles");
             File[] listOfFilesServer = Server_folder.listFiles();
             for(File files:listOfFilesServer){
@@ -83,6 +88,13 @@ public class FileServerThread extends Thread{
 
 
          }else if(command.equalsIgnoreCase("Upload")){
+
+            /*
+            * When the client sends the Upload command
+            * the filename is used to create the a new file
+            * then the contents are sent from the client to t e server and
+            *  then are written to the new file that was created
+            * */
             String path = "";
             String Filename = "";
             File IncomingFile = null;
@@ -111,6 +123,10 @@ public class FileServerThread extends Thread{
                 }
 
         }else if(command.equalsIgnoreCase("Dir")){
+            /*
+            * When this command is requested it gets the all the file names in the server
+            * and concatinate them to a string and send it to the client.
+            * */
             String FilesSending = "";
             final File Server_folder = new File("ServerFiles");
             File[] listOfFilesServer = Server_folder.listFiles();

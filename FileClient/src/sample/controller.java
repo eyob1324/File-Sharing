@@ -64,6 +64,11 @@ public class controller {
         String message1= "";
         String message2= "";
 
+
+        /*
+        * creates new socket to get all the files
+        * from the the server file to get all the filenames to show on the UI
+        * */
         try{
             Socket clientSocket = new Socket("localhost", 8080);
             Out = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()));
@@ -91,6 +96,7 @@ public class controller {
 
         // takes the file folder and makes it a list that we can go through
         File[] listOfFilesClient = Client_folder.listFiles();
+        //goes througgh the folder if in the folder of the object is a file then adds it to the ClienFiles List
         for (File file : listOfFilesClient) {
             if (file.isFile()) {
                 ClientFiles.add(file.getName());
@@ -122,7 +128,15 @@ public class controller {
         lblSystemMessage.setText("");
         Hide.setVisible(false);
     }
-
+    /*
+    * btnOnPressdownload is used to get the file from the server and download it to the ClientFolder
+    *
+    *@pram ActionEvent actionEvent
+    * when button is pressed it creates a new client socket and new output stream
+    * It sends a command to the server "Download" and the filename that we want to get
+    * once the server gets the command it starts sending the contents of the file and the function receives
+    * it and creates a the file in The client file with the data gotten from the server.
+    * */
     public void btnOnPressdownload(ActionEvent actionEvent) throws IOException {
         Socket clientSocket = null;
         PrintWriter OUT = null;
@@ -144,13 +158,17 @@ public class controller {
       }
 
         try{
+            //data from server is read and the stored in DataFromServer
             DataFromServer = In.readLine();
+            //path to were the new file is going to be created
             String path = "ClientFiles/" + Server.getSelectionModel().getSelectedItems().get(0);
             File IncomingFile= new File(path);
+            //looks to see if the file already exists
             if(!IncomingFile.exists()) {
                 IncomingFile.createNewFile();
             }
             FileWriter fw=new FileWriter(path);
+            //writes to new file
             String [] Sentences =DataFromServer.split(" ");
             for(String Sentence:Sentences){
                 fw.write(Sentence+" ");
@@ -160,20 +178,31 @@ public class controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        //closes the socket
         clientSocket.close();
+        //updates the list
         ListViewUpdate();
     }
 
+    /*
+    * btnOnPressUpload is used to upload Files from the ClientFiles to The ServerFiles
+    *
+    * It first creates a socket that connects to port 8080
+    * and then sends a command to upload first the File name
+    * and then after it sends the content of the file
+    * */
     public void btnOnPressUpload(ActionEvent actionEvent) {
         Socket clientSocket = null;
         PrintWriter out = null;
-        ClientFiles.clear();
-        ServerFiles.clear();
         try{
+            //creates socket
             clientSocket = new Socket("localhost",8080);
             out = new PrintWriter(new BufferedOutputStream(clientSocket.getOutputStream()));
+            //sends upload command with the file name as second argument
             out.println("Upload"+" "+client.getSelectionModel().getSelectedItems().get(0));
+            //takes client_folder and makes it a list of files;
             File[] listOfFilesClient = Client_folder.listFiles();
+            //loops until the file selected is found
             for (File file : listOfFilesClient) {
                 if (file.getName().equals(client.getSelectionModel().getSelectedItems().get(0)) ) {
                     //this is where the file content is sent through the socket
@@ -191,13 +220,19 @@ public class controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        //updates the listView
     ListViewUpdate();
     }
 
     public void exitProgram(ActionEvent event){
         System.exit(0);
     }
-
+    /*
+    * ListViewUpdate is used to update what is seen on the Listveiw when new files are put in the clientfile
+    *
+    * It woks by first clearing the ArrayList ServerFiles and ClientFiles
+    * Then it grabs the new Data and enteres them in their respective ArrayList
+    * */
     public void ListViewUpdate() {
         ServerFiles.clear();
         ClientFiles.clear();
@@ -247,7 +282,8 @@ public class controller {
         ServerFileList.set(FXCollections.observableArrayList(ServerFiles));
     }
 
-
+    /*function that when pressed calls the ListViewUpdate
+    * to update the ListView on the UI to the most uptodate version*/
     public void btnOnPressupdate(ActionEvent actionEvent) {
         ListViewUpdate();
     }
