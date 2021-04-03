@@ -31,7 +31,7 @@ stackoverflow
 
 
 # Created BY:
-Eyob keflinkiel 100741394  Fahad Bhatti 100749152 
+Eyob keflinkiel 100741394 and Fahad Bhatti 100749152 
 
 
 
