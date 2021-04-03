@@ -33,6 +33,8 @@ public class controller {
     @FXML
     private Button Upload;
     @FXML
+    private Button Update;
+    @FXML
     private ListView client;
     @FXML
     private ListView Server;
@@ -246,4 +248,7 @@ public class controller {
     }
 
 
+    public void btnOnPressupdate(ActionEvent actionEvent) {
+        ListViewUpdate();
+    }
 }

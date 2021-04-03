@@ -111,7 +111,6 @@ public class FileServerThread extends Thread{
                 }
 
         }else if(command.equalsIgnoreCase("Dir")){
-            System.out.println("got to here");
             String FilesSending = "";
             final File Server_folder = new File("ServerFiles");
             File[] listOfFilesServer = Server_folder.listFiles();

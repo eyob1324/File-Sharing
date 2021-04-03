@@ -18,8 +18,8 @@
             xmlns:fx="http://javafx.com/fxml">
   <children>
       <Button fx:id="Download" styleClass="Download" layoutX="393" layoutY="0" onAction="#btnOnPressdownload" prefHeight="26.0" prefWidth="100.0" text="Download"/>
-      <Button fx:id="Upload" styleClass="Upload" layoutX="495" layoutY="0" onAction="#btnOnPressUpload" prefHeight="26.0" prefWidth="100.0" text="Upload" />
-
+      <Button fx:id="Upload" styleClass="Upload" layoutX="500" layoutY="0" onAction="#btnOnPressUpload" prefHeight="26.0" prefWidth="100.0" text="Upload" />
+      <Button fx:id="Update" styleClass="Upload" layoutX="285" layoutY="0" onAction="#btnOnPressupdate" prefHeight="26.0" prefWidth="100.0" text="Update" />
       <ListView fx:id="client" styleClass="Client" layoutX="0" layoutY="80" prefHeight="650" prefWidth="300" />
       <ListView fx:id="Server" layoutX="310" layoutY="80" prefHeight="650" prefWidth="285" />
       <Label fx:id="lblSystemMessage" layoutX="310" layoutY="730" />

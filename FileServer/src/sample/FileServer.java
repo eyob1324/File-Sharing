@@ -20,7 +20,7 @@ public class FileServer{
     protected Vector messages               = new Vector();
 
     public static int SERVER_PORT = 8080;
-    public static int MAX_CLIENTS = 25;
+    public static int MAX_CLIENTS = 100;
 
     public FileServer() {
         try {
