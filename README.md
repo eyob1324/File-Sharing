@@ -8,7 +8,7 @@ This program will allow the user to connect to a central server were the user ca
 # Improvements:
 1. Added MenueBar which allows user to Exit or get Help on how to use system
 2. if user presses Exit the system will shut down 
-3. If user presses Help Shystem will display a message on how to use system, and button to hide message
+3. If user presses Help System will display a message on how to use system, and button to hide message
 4. Added CSS to improve the user interfaces of our system.
 
 # How To Run Code:
@@ -26,8 +26,10 @@ This program will allow the user to connect to a central server were the user ca
 ![image](https://user-images.githubusercontent.com/61993813/113470192-a8b1fa80-9421-11eb-8b47-bd282de8a505.png)
 
 # Resources-Used:
-Only basic syntax was pulled from online resoures, Mostly in class exaples and lab resources were used.
-stackoverflow
+-Only basic syntax was pulled from online resoures, Mostly in class exaples and lab resources were used.
+-stackoverflow
+-w3schools
+-and other websites
 
 
 # Created BY:
