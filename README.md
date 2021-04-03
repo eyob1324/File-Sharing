@@ -17,7 +17,7 @@ This program will allow the user to connect to a central server were the user ca
 3. Run FileServer first by pressing play at top right
 4. Added Update button if you create a file while program is running to update the system.
 5. Run FileClient sceond by pressing play at top right
-6. Video Eamf Update: https://youtu.be/2dCvAYzuf_Y
+6. Video Example for Update: https://youtu.be/2dCvAYzuf_Y
 
 # Basic Run Example:
 
