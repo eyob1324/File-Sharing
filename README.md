@@ -9,6 +9,7 @@ This program will allow the user to connect to a central server were the user ca
 1. Added MenueBar which allows user to Exit or get Help on how to use system
 2. if user presses Exit the system will shut down 
 3. If user presses Help Shystem will display a message on how to use system, and button to hide message
+4. Added CSS to improve the user interfaces of our system.
 
 # How To Run Code:
 1. open FileServer in intelli-J
