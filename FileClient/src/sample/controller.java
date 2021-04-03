@@ -110,6 +110,11 @@ public class controller {
     }
 
     public void helpLable(ActionEvent event){
+        /*
+         * Makes Hide button visible
+         * And outputs help instruction
+         */
+        //Makes Hide button visible
         Hide.setVisible(true);
         lblSystemMessage.setText(
                 "Help Menu:" +
@@ -120,12 +125,17 @@ public class controller {
                 "\n 1.choose folder you would like to download" +
                 "\n  from server-side Then press Download"
         );
+        //Creates Hide button
         Hide.setText("Hide Text");
         Hide.setLayoutX(390);
         Hide.setLayoutY(845);
     }
     public void hideLable(ActionEvent event){
+        /*
+         * Hides The Label and Hide button ones run
+         */
         lblSystemMessage.setText("");
+        //hides Hide Button
         Hide.setVisible(false);
     }
     /*
@@ -224,9 +234,14 @@ public class controller {
     ListViewUpdate();
     }
 
+
     public void exitProgram(ActionEvent event){
+        /*
+         * Function closes the system running
+         */
         System.exit(0);
     }
+
     /*
     * ListViewUpdate is used to update what is seen on the Listveiw when new files are put in the clientfile
     *
