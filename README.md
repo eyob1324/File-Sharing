@@ -16,12 +16,8 @@ This program will allow the user to connect to a central server were the user ca
 3. Run FileServer first by pressing play at top right
 4. Run FileClient sceond by pressing play at top right
 
-# Examle Run:
-(Start)
 ![image](https://user-images.githubusercontent.com/61993813/113470163-72747b00-9421-11eb-88df-c897db0da50b.png)
-(Uploding File)
 ![image](https://user-images.githubusercontent.com/61993813/113470181-8fa94980-9421-11eb-84b6-ccb548659cb5.png)
-(Downloading File)
 ![image](https://user-images.githubusercontent.com/61993813/113470192-a8b1fa80-9421-11eb-8b47-bd282de8a505.png)
 
 # Resources-Used:
