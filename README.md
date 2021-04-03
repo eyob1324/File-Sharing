@@ -15,6 +15,7 @@ This program will allow the user to connect to a central server were the user ca
 2. open FileClient in separate intelli-J window
 3. Run FileServer first by pressing play at top right
 4. Run FileClient sceond by pressing play at top right
+5. Video https://youtu.be/2dCvAYzuf_Y
 
 ![image](https://user-images.githubusercontent.com/61993813/113470163-72747b00-9421-11eb-88df-c897db0da50b.png)
 ![image](https://user-images.githubusercontent.com/61993813/113470181-8fa94980-9421-11eb-84b6-ccb548659cb5.png)
@@ -22,9 +23,11 @@ This program will allow the user to connect to a central server were the user ca
 
 # Resources-Used:
 Only basic syntax was pulled from online resoures, Mostly in class exaples and lab resources were used.
+stackoverflow
+
 
 # Created BY:
-Fahad Bhatti 100749152 Eyob keflinkiel 100741394 
+Eyob keflinkiel 100741394  Fahad Bhatti 100749152 
 
 
 
