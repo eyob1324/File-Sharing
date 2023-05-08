@@ -1,4 +1,4 @@
-# csci2020u-Assignment2 
+
 
 # File Sharing:
 This program will allow the user to connect to a central server were the user canuplaod and download files. Some fetures include:
